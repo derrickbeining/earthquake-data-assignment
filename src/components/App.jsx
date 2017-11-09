@@ -6,8 +6,8 @@ import DataViewController from './DataViewController';
 import Paper from './Paper';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       data: [],
       attrsToDisplay: [],
@@ -21,7 +21,6 @@ class App extends React.Component {
     fetch('http://interviewtest.getguru.com/seismic/data.json')
     .then(response => response.json())
     .then(data => [data, Object.keys(data[0]).slice(0, 10)])
-    // .then(newState => [...newState, App.createDataOrderMap(newState[0][0])])
     .then(([data, attrsToDisplay]) => this.setState({
       data,
       attrsToDisplay,

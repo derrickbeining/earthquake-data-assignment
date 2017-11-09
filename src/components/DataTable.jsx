@@ -1,8 +1,6 @@
 import React from 'react';
-
-const convertDate = dateString => {
-  return new Date(dateString).toUTCString().split(', ')[1];
-}
+import toTitleCase from '../utils/toTitleCase';
+import convertDate from '../utils/convertDate';
 
 class DataTable extends React.Component {
   constructor(props) {
@@ -28,7 +26,7 @@ class DataTable extends React.Component {
           className={className}
           onClick={() => this.sortRowsBy(attr)}
         >
-          {`${attr[0].toUpperCase()}${attr.slice(1)}`}&nbsp;
+          {toTitleCase(attr)}&nbsp;
           {className === 'selected' ? sortPointer : null}
         </th>
       )
@@ -121,7 +119,5 @@ class DataTable extends React.Component {
     )
   }
 }
-
-
 
 export default DataTable;

@@ -61,7 +61,8 @@ body {
   * {
     box-sizing: inherit;
 
-    &::before &::after {
+    &::before,
+    &::after {
       box-sizing: inherit;
     }
   }
@@ -174,8 +175,9 @@ thead {
 }
 
 .paper {
-  background-color: white;;
+  background-color: white;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
   margin-bottom: 1%;
   margin-top: 1%;
   padding: 2rem;

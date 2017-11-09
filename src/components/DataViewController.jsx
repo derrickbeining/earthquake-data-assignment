@@ -1,4 +1,5 @@
 import React from 'react';
+import toTitleCase from '../utils/toTitleCase';
 
 const DataViewController = ({data, attrsToDisplay, handleChange}) => {
 
@@ -15,14 +16,13 @@ const DataViewController = ({data, attrsToDisplay, handleChange}) => {
           defaultChecked={attrsToDisplay.includes(attr)}
         />
         <label htmlFor={attr}>
-          {`${attr[0].toUpperCase()}${attr.slice(1)}`}
+          {toTitleCase(attr)}
         </label>
       </div>)
     })
   }
 
   return (
-    // <div className="container">
       <form>
         <fieldset
           name="dataChoices"
@@ -34,7 +34,6 @@ const DataViewController = ({data, attrsToDisplay, handleChange}) => {
           </div>
         </fieldset>
       </form>
-    // </div>
 )}
 
 export default DataViewController;

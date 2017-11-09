@@ -1,26 +1,14 @@
 {
-  "name": "react-webpack-babel-starter",
-  "version": "0.1.0",
-  "description": "Starter kit for React, Webpack (with Hot Module Replacement) and Babel.",
-  "keywords": [
-    "react",
-    "webpack",
-    "babel",
-    "sass",
-    "hmr",
-    "starter",
-    "boilerplate"
-  ],
-  "author": "Viktor Persson",
+  "name": "earthquake-data-assignment",
+  "version": "0.0.1",
+  "description": "Fetch some data and display it",
+  "keywords": [],
+  "author": "Derrick Beining",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vikpe/react-webpack-babel-starter.git"
+    "url": "git+https://github.com/derrickbeining/earthquake-data-assignment.git"
   },
-  "bugs": {
-    "url": "https://github.com/vikpe/react-webpack-babel-starter/issues"
-  },
-  "homepage": "https://github.com/vikpe/react-webpack-babel-starter",
   "scripts": {
     "build": "webpack -p --config=configs/webpack/prod",
     "start": "npm run start-dev",
