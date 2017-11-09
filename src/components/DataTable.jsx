@@ -66,20 +66,22 @@ class DataTable extends React.Component {
     else this.setState({sortAttr: attrName, sortDirection: 'desc'})
   }
 
-  static createAttrSorter(attrName, direction) {
-    if (direction === 'desc') {
-      return (curr, next) => {
-        if (next[attrName] > curr[attrName]) return 1;
-        if (next[attrName] < curr[attrName]) return -1;
-        return 0;
-      }
-    } else {
-      return (curr, next) => {
-        if (curr[attrName] > next[attrName]) return 1;
-        if (curr[attrName] < next[attrName]) return -1;
-        return 0;
-      }
-    }
+  static createAttrSorter(attr, direction) {
+    return direction === 'desc'
+      ? DataTable.sortAttrsDesc.bind(null, attr)
+      : DataTable.sortAttrsAsc.bind(null, attr);
+  }
+
+  static sortAttrsDesc(attr, curr, next) {
+    if (next[attr] > curr[attr]) return 1;
+    if (next[attr] < curr[attr]) return -1;
+    return 0;
+  }
+
+  static sortAttrsAsc(attr, curr, next) {
+    if (curr[attr] > next[attr]) return 1;
+    if (curr[attr] < next[attr]) return -1;
+    return 0;
   }
 
   static createDataOrderMap(data) {
