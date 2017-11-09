@@ -1,6 +1,5 @@
 // shared config (dev and prod)
 const {resolve} = require('path');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -42,13 +41,8 @@ module.exports = {
     ],
   },
   plugins: [
-    // new StyleLintPlugin(),
-    new HtmlWebpackPlugin({template: 'index.html.ejs',}),
+    new HtmlWebpackPlugin({template: 'index.html',}),
   ],
-  // externals: {
-  //   'react': 'React',
-  //   'react-dom': 'ReactDOM',
-  // },
   performance: {
     hints: false,
   },
