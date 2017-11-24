@@ -2,3 +2,6 @@
 dist/
 node_modules/
 tests/__coverage__/
+npm-debug.log
+.DS_Store
+
