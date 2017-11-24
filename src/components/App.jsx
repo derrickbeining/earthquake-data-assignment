@@ -23,7 +23,7 @@ class App extends React.Component {
 
   componentDidMount() {
     // load data to state
-    fetch('http://interviewtest.getguru.com/seismic/data.json')
+    fetch('http://interviewtest.getguru.com/seismic/data.json', {mode: 'cors'})
     .then(response => response.json())
     .then(data => this.setState({data, isLoading: false}))
     .catch(err => {
