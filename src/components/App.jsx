@@ -9,23 +9,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      attrsToDisplay: ['id', 'time', 'place', 'mag'],
       data: [],
-      attrsToDisplay: [],
-      isLoading: true,
       errorMsg: '',
+      isLoading: true,
+      numRowsToDisplay: 20,
+      currentResultsPage: 0
     }
+    this.updateAttrsToDisplay = this.updateAttrsToDisplay.bind(this);
+    this.incrementResultsPage = this.incrementResultsPage.bind(this);
+    this.decrementResultsPage = this.decrementResultsPage.bind(this);
   }
 
   componentDidMount() {
     // load data to state
     fetch('http://interviewtest.getguru.com/seismic/data.json')
     .then(response => response.json())
-    .then(data => [data, Object.keys(data[0]).slice(0, 10)])
-    .then(([data, attrsToDisplay]) => this.setState({
-      data,
-      attrsToDisplay,
-      isLoading: false,
-    }))
+    .then(data => this.setState({data, isLoading: false}))
     .catch(err => {
       console.error(err);
       this.setState({
@@ -43,17 +43,35 @@ class App extends React.Component {
     })
   }
 
+  incrementResultsPage() {
+    const totalRows = this.state.data.length;
+    const totalPages = Math.ceil(totalRows / this.state.numRowsToDisplay) - 1;
+    if (this.state.currentResultsPage < totalPages) {
+      this.setState(prevState => ({currentResultsPage: prevState.currentResultsPage + 1}))
+    }
+  }
+
+  decrementResultsPage() {
+    if (this.state.currentResultsPage > 0) {
+      this.setState(prevState => ({currentResultsPage: prevState.currentResultsPage - 1}))
+    }
+  }
+
   render() {
     return (
           <main>
             <div className="flex container">
-              <h1 className="title-header">DataQuake</h1>
+              <h1 className="title-header">Earthquake Data</h1>
             </div>
             <Paper>
               <DataViewController
-                data={this.state.data}
                 attrsToDisplay={this.state.attrsToDisplay}
-                handleChange={evt => this.updateAttrsToDisplay(evt)}
+                currPage={this.state.currentResultsPage}
+                data={this.state.data}
+                decrementResultsPage={this.decrementResultsPage}
+                incrementResultsPage={this.incrementResultsPage}
+                numRowsToDisplay={this.state.numRowsToDisplay}
+                updateAttrsToDisplay={this.updateAttrsToDisplay}
               />
 
               {this.state.isLoading &&
@@ -70,8 +88,10 @@ class App extends React.Component {
 
               {this.state.data[0] &&
                 (<DataTable
-                  data={this.state.data}
                   attrsToDisplay={this.state.attrsToDisplay}
+                  currPage={this.state.currentResultsPage}
+                  data={this.state.data}
+                  numRowsToDisplay={this.state.numRowsToDisplay}
                 />)
               }
 

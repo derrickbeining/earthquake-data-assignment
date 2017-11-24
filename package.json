@@ -44,7 +44,9 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "normalize.css": "^7.0.0"
+    "normalize.css": "^7.0.0",
+    "react-popover": "^0.5.4",
+    "react-simple-popover": "^0.2.2"
   },
   "postcss": {}
 }
