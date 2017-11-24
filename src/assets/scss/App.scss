@@ -48,15 +48,20 @@ html {
     font-size: 18px;
     line-height: 1.68;
   }
+
+  // background-attachment: fixed;
   background: #c33764; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #c33764, #1d2671); /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to bottom, #c33764, #1d2671); /* Chrome 10-25, Safari 5.1-color-6 */
   background: linear-gradient(to bottom, #c33764, #1d2671); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  // height: 100%;
+  min-height: 100%;
 }
 
 body {
   box-sizing: border-box;
   font-family: Verdana, arial, sans-serif;
   font-size: 1rem;
+  font-weight: 100;
 
   * {
     box-sizing: inherit;
@@ -68,12 +73,27 @@ body {
   }
 }
 
-fieldset {
-  border: 0;
+button {
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4),
+              inset -5px -5px 2px -4px rgba(0, 0, 0, .2);
+  display: inline-block;
+  font-size: 90%;
+  padding: .3rem .5rem;
+  max-height: 100%;
+  margin: 0;
+
+  &:active {
+    filter: brightness(0.9);
+    transform: scale(0.95);
+  }
+
 }
 
-form {
-  margin-bottom: 2rem;
+fieldset {
+  border: 0;
 }
 
 h1 {
@@ -99,34 +119,49 @@ legend {
 
 p {
   font-family: inherit;
+  // margin-bottom: 0;
 }
 
 td {
+  background: rgba(0, 0, 0, 0);
   padding: 1rem;
   white-space: nowrap;
 }
 
-th {
-  font-weight: 400;
-  padding: 1rem;
-}
-
 thead {
-  background: #c33764; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #c33764, #1d2671); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #c33764, #1d2671); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #1d2671; /* fallback for old browsers */
+  // background: -webkit-linear-gradient(to left, #c33764, #1d2671); /* Chrome 10-25, Safari 5.1-6 */
+  // background: linear-gradient(to left, #c33764, #1d2671); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   // background-color: rgb(20, 208, 211);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, .3);
-  color: white;;
+  color: white;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;
 
   th {
+    fill: rgba(255, 255, 255, 0.3);
+    font-weight: 400;
+    padding: 1rem;
+    text-align: left;
+
     &:hover {
       background-color: rgba(255, 255, 255, .1);
     }
 
     &.selected {
-      background-color: rgba(0, 0, 0, .2);
+      background-color: rgba(255, 255, 255, .2);
     }
+  }
+}
+
+tr {
+  background: rgba(0, 0, 0, 0);
+  white-space: nowrap;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .05);
   }
 }
 
@@ -174,6 +209,21 @@ thead {
   display: flex;
 }
 
+.data-view-controller {
+
+}
+
+.pagination-bar {
+  margin: 1rem auto;
+}
+
+.pagination-button {
+  // background-color: #1d2671;
+  // border: solid 1px #1d2671;
+  // color: white;
+  padding: .5rem 1rem;
+}
+
 .paper {
   background-color: white;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.4);
@@ -183,9 +233,53 @@ thead {
   padding: 2rem;
 }
 
+.Popover-body {
+  // background: hsl(0, 0%, 27%);
+  background: #c33764;
+  border-radius: 0.3rem;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.4);
+  color: white;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: .5rem 1rem;
+
+  * {
+    margin: .1rem auto;
+  }
+}
+
+.popover-button {
+  background: #c33764;
+  border: 1px solid #c33764;
+  color: white;
+  font-weight: 100;
+
+
+}
+
+.Popover-tipShape {
+  // fill: hsl(0, 0%, 27%);
+  fill: #c33764;
+}
+
+.spread-contents {
+  display: flex;
+  justify-content: space-between;
+}
+
 .table-container {
   table {
     border-collapse: collapse;
+  }
+}
+
+.th-icon {
+  height: 1.2rem;
+  margin-bottom: -.2rem;
+  width: 1.2rem;
+  &:hover {
+    fill: #fff;
   }
 }
 
@@ -200,7 +294,7 @@ thead {
 
 .x-scroll-container {
   -webkit-overflow-scrolling: touch;
-  box-shadow: inset -3px 1px 10px 1px rgba(0, 0, 0, .4);
+  box-shadow: inset -3px 0px 10px -1px rgba(0, 0, 0, .4);
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;

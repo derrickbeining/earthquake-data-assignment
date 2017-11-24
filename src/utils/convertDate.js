@@ -1,5 +1,8 @@
 const convertDate = dateString => {
-  return new Date(dateString).toUTCString().split(', ')[1];
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const dt = new Date(dateString);
+
+  return `${months[dt.getMonth()]} ${dt.getDay()}, ${dt.getFullYear()} @ ${dt.getHours()}:${dt.getMinutes()}`
 }
 
 export default convertDate;
