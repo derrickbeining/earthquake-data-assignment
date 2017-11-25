@@ -69,7 +69,7 @@ class DataTable extends React.Component {
     return (row) => {
       return columns.every(column => {
         if (!filters[column]) return true;
-        let filter = new RegExp(filters[column], 'i');
+        let filter = new RegExp(`/${filters[column]}/`, 'i');
         if (column === 'time' || column === 'updated') {
           return filter.test(convertDate(row[column]));
         } else {
